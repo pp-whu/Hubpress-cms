@@ -69,11 +69,14 @@ HTTPS-Release-Quelle in `.env`:
 
 ```dotenv
 HUBERCMS_UPDATE_URL=https://example.com/releases/latest.json
+HUBERCMS_GITHUB_TOKEN=
 ```
 
 Die JSON-Antwort muss `version` (oder `tag_name`) und `download_url` (oder
 `zipball_url`) enthalten. Das ZIP wird serverseitig entpackt; `.env` und
-`app/Storage` bleiben erhalten.
+`app/Storage` bleiben erhalten. Bei einem privaten GitHub-Repository benötigt
+der Token Leserechte auf das Repository. Außerdem muss dort mindestens ein
+veröffentlichtes Release vorhanden sein.
 
 ---
 

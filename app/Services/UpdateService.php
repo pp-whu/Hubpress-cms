@@ -81,17 +81,29 @@ final class UpdateService
 
     private function request(string $url): string
     {
+        $headers = [
+            'Accept: application/vnd.github+json',
+            'User-Agent: HuberCMS-Updater',
+        ];
+        $token = trim((string) ($_ENV['HUBERCMS_GITHUB_TOKEN'] ?? ''));
+        if ($token !== '') {
+            $headers[] = 'Authorization: Bearer ' . $token;
+        }
+
         $context = stream_context_create(['http' => [
             'method' => 'GET',
             'timeout' => 15,
             'ignore_errors' => true,
-            'header' => "Accept: application/json\r\nUser-Agent: HuberCMS-Updater\r\n",
+            'header' => implode("\r\n", $headers) . "\r\n",
         ]]);
         $body = @file_get_contents($url, false, $context);
         $statusLine = $http_response_header[0] ?? '';
         if ($body === false || preg_match('/\s(\d{3})\s/', $statusLine, $matches) !== 1 || $matches[1] !== '200') {
             $status = isset($matches[1]) ? ' HTTP ' . $matches[1] : '';
-            throw new RuntimeException('Die Update-Quelle liefert keine gültige Antwort (' . trim($url) . $status . ').');
+            $hint = $status === ' HTTP 404'
+                ? ' Prüfe, ob das Repository privat ist und ob ein Release veröffentlicht wurde.'
+                : '';
+            throw new RuntimeException('Die Update-Quelle liefert keine gültige Antwort (' . trim($url) . $status . ').' . $hint);
         }
         return $body;
     }
