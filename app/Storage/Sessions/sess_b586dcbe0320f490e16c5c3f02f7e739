@@ -1,0 +1,1 @@
+_flash|a:2:{s:7:"current";a:0:{}s:3:"new";a:0:{}}_csrf_token|s:64:"553be2932862af51bcc3bdf064ca6fc9d51958f0559280d5df848e26e6737cd1";auth_user|a:5:{s:2:"id";i:1;s:8:"username";s:5:"admin";s:5:"email";s:31:"waldemar.huber@pfennigparade.de";s:4:"role";s:11:"super_admin";s:6:"avatar";N;}auth_time|i:1784720200;

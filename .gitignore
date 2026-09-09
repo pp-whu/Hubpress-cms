@@ -1,0 +1,53 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Cache & Logs
+/app/Storage/Cache/*
+/app/Storage/Logs/*
+!/app/Storage/Cache/.gitkeep
+!/app/Storage/Logs/.gitkeep
+
+# Uploads (user content)
+/app/Storage/Uploads/*
+!/app/Storage/Uploads/.gitkeep
+/public/assets/uploads/*
+!/public/assets/uploads/.gitkeep
+
+# Build artifacts
+/public/assets/css/compiled/
+/public/assets/js/compiled/
+
+# IDE & OS
+.idea/
+.vscode/
+*.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# PHP CS Fixer
+.php-cs-fixer.cache
+.php_cs.cache
+
+# PHPStan
+.phpstan.cache/
+
+# PHPUnit
+.phpunit.result.cache
+/coverage/
+
+# Composer lock (keep it for reproducibility)
+# composer.lock
+
+# DDEV
+# .ddev/ is tracked
+
+# Config generated during install
+/app/Config/generated.php
+/public/install.lock
