@@ -10,7 +10,7 @@ declare(strict_types=1);
  * and dispatches the request to the appropriate handler.
  *
  * @package HuberCMS
- * @version 1.0.2
+ * @version 1.0.3
  * @license MIT
  */
 
@@ -18,7 +18,7 @@ declare(strict_types=1);
 // Define constants
 // ============================================================
 
-define('HUBERCMS_VERSION', '1.0.2');
+define('HUBERCMS_VERSION', '1.0.3');
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 define('PUBLIC_PATH', __DIR__);
